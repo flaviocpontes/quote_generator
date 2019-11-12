@@ -10,9 +10,5 @@ async def stream_handler(request):
 
     while True:
         msg = next(generator)
-        await ws.send_json(next(generator))
+        await ws.send_json(msg)
         await sleep(.1)
-
-
-async def root_handler(request):
-    return web.Response(text="Hello World!")
