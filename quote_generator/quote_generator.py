@@ -16,6 +16,6 @@ class QuoteGenerator:
     def __next__(self):
         while self.iterate:
             symbol = self.randomizer.choice(self.symbol_list)
-            self.quotes[symbol] *= self.randomizer.uniform(0.5, 1.5)
+            self.quotes[symbol] *= self.randomizer.uniform(0.9, 1.12)
             return {symbol: float(f'{self.quotes[symbol]:.02f}'),
                     "timestamp": datetime.utcnow().timestamp()}
