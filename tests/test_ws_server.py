@@ -1,4 +1,3 @@
-from aiohttp import web
 import pytest
 
 from streamer import create_app
@@ -16,6 +15,14 @@ async def test_get_one_quote_from_ws(test_client):
     async with test_client.ws_connect('/quotes') as ws:
         assert await ws.receive_json() == {"B3SA3": 10.25, "timestamp": 1495335600.0}
         await ws.close()
+
+
+@pytest.mark.freeze_time('2017-05-21')
+async def test_dont_send_ack_msg(test_client):
+    msg_data = None
+    async with test_client.ws_connect('/quotes') as ws:
+        assert await ws.receive_json() == {"B3SA3": 10.25, "timestamp": 1495335600.0}
+        assert await ws.receive_json() == {'BBDC4': 9.56, 'timestamp': 1495335600.0}
 
 
 async def receive_next_quote(ws):
