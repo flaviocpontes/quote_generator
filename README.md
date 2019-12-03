@@ -10,4 +10,4 @@ Para rodar basta usar o `docker build .` e criar um container local.
 
 Preferencialmente se deve usar o container hospedado no Docker Hub com o comando `docker run -p 8080:8080 toroinvestimentos/quotesmock`
 
-O fluxo de cotações será acessado no path `/quotes`
+O fluxo de cotações será acessado no path `/quotes` e retorna um documento no formato `{SÍMBOLO: VALOR}`, por ex: `{"B3SA3": 10.34, "timestamp": 1495335600.0}`
