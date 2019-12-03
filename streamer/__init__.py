@@ -10,9 +10,7 @@ def create_app(max_value: float = 150.00, min_value: float = 5.00, update_interv
     app = web.Application()
     app.router.add_route("GET", "/quotes", stream_handler)
 
-    app['GENERATOR'] = QuoteGenerator(SHARE_SYMBOLS, seed=1)
-    app['MIN_VALUE'] = min_value
-    app['MAX_VALUE'] = max_value
+    app['GENERATOR'] = QuoteGenerator(SHARE_SYMBOLS, min_value=min_value, max_value=max_value, seed=1)
     app['UPDATE_INTERVAL'] = update_interval
 
     return app

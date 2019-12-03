@@ -4,8 +4,6 @@ from asyncio import sleep
 
 async def stream_handler(request):
     generator = request.app['GENERATOR']
-    min_value = request.app['MIN_VALUE']
-    max_value = request.app['MAX_VALUE']
     update_interval = request.app['UPDATE_INTERVAL']
 
     ws = web.WebSocketResponse()
